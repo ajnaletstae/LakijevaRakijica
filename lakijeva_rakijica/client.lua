@@ -5,7 +5,7 @@ local IsAnimated = false
 Citizen.CreateThread(function()
     while ESX == nil do
         TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(500)
+        Citizen.Wait(1500)
     end
 end)
 
@@ -61,9 +61,9 @@ AddEventHandler('lakijeva-rakija:onRakijica', function(prop_name)
     SetPedMovementClipset(playerPed, "move_m@hobo@a", true)
     SetPedIsDrunk(playerPed, true)
     AnimpostfxPlay("HeistCelebPass", 10000001, true)
-    ShakeGameplayCam("DRUNK_SHAKE", 5.0)
-    SetEntityHealth(GetPlayerPed(-1), 195)
-    SetPedArmour(PlayerPedId(), 100)
+    ShakeGameplayCam("DRUNK_SHAKE", 8.0)
+    SetEntityHealth(GetPlayerPed(-1), 200)
+    SetPedArmour(PlayerPedId(), 200)
     Citizen.Wait(300000)
     SetPedMoveRateOverride(PlayerId(),1.0)
     SetRunSprintMultiplierForPlayer(PlayerId(),1.0)
