@@ -9,6 +9,6 @@ ESX.RegisterUsableItem('rakijica', function(source)
     local _source = source
 	local xPlayer = ESX.GetPlayerFromId(_source)
 	xPlayer.removeInventoryItem('rakijica', 1)
-	TriggerClientEvent('lakijeva-rakija:onRakijica', _source)
+	TriggerClientEvent('lakijeva-rakija:onRakijica', source)
 end)
 
