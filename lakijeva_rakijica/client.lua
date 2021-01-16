@@ -2,25 +2,11 @@ ESX              = nil
 local PlayerData = {}
 local IsAnimated = false
 
-Citizen.CreateThread(function()
-    while ESX == nil do
-        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(1500)
-    end
-end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
     PlayerData = xPlayer
-end)
-
-RegisterNetEvent('esx:setJob')
-AddEventHandler('esx:setJob', function(job)
-    PlayerData.job = job
-end)
-
-TriggerEvent('esx:getSharedObject', function(obj)
-	ESX = obj
 end)
 
 RegisterNetEvent('lakijeva-rakija:onRakijica')
