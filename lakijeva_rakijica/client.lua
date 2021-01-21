@@ -1,13 +1,8 @@
-ESX              = nil
+ESX = nil
 local PlayerData = {}
-local IsAnimated = false
+local animPocni = false
 
-Citizen.CreateThread(function()
-    while ESX == nil do
-        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-        Citizen.Wait(1500)
-    end
-end)
+TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
@@ -19,21 +14,16 @@ AddEventHandler('esx:setJob', function(job)
     PlayerData.job = job
 end)
 
-TriggerEvent('esx:getSharedObject', function(obj)
-	ESX = obj
-end)
-
 RegisterNetEvent('lakijeva-rakija:onRakijica')
 AddEventHandler('lakijeva-rakija:onRakijica', function(prop_name)
     -- !! NE DIRAJ NISTA AKO NE ZNAS !! --
     local playerPed = GetPlayerPed(-1)
-    local playerPed = PlayerPedId()
     prop_name = prop_name or 'prop_vodka_bottle'
-	IsAnimated = true
+	animPocni = true
 
     RequestAnimSet("move_m@hobo@a") 
     while not HasAnimSetLoaded("move_m@hobo@a") do
-      Citizen.Wait(0)
+      Citizen.Wait(100)
     end    
 
     -- OSIM OVOG -- ↓
@@ -49,7 +39,7 @@ AddEventHandler('lakijeva-rakija:onRakijica', function(prop_name)
 		ESX.Streaming.RequestAnimDict('mp_player_intdrink', function()
 			TaskPlayAnim(playerPed, 'mp_player_intdrink', 'loop_bottle', 1.0, -1.0, 2000, 0, 1, true, true, true)
 			Citizen.Wait(3000)
-			IsAnimated = false
+			animPocni = false
 			ClearPedSecondaryTask(playerPed)
 			DeleteObject(prop)
 		end)
