@@ -2,10 +2,10 @@
 Rakija za FiveM servere.
 
 # Ubacivanje
-
 Ubacite rakija.sql u databazu
-Nakon toga startujete u server.cfg folder lakijeva_rakijica
-I to je to
-# Developed
+Nakon toga startujete u cfg kucate start lakijeva_rakijica
 
-Napravio L4K1SH4#7855
+# Developer
+Discord: L4K1SH4#7855
+Fiverr: [https://www.fiverr.com/lazarcvetanovi]
+Shoppy: [https://shoppy.gg/@LakishaDev]
