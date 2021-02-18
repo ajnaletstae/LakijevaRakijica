@@ -1,22 +1,22 @@
+-- !! NE DIRAJ NISTA AKO NE ZNAS !! --
 ESX = nil
 local PlayerData = {}
 local animPocni = false
 
-TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+Citizen.CreateThread(function()
+    while ESX == nil do
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+        Wait(1)
+    end
+end)
 
 RegisterNetEvent('esx:playerLoaded')
 AddEventHandler('esx:playerLoaded', function(xPlayer)
     PlayerData = xPlayer
 end)
 
-RegisterNetEvent('esx:setJob')
-AddEventHandler('esx:setJob', function(job)
-    PlayerData.job = job
-end)
-
 RegisterNetEvent('lakijeva-rakija:onRakijica')
 AddEventHandler('lakijeva-rakija:onRakijica', function(prop_name)
-    -- !! NE DIRAJ NISTA AKO NE ZNAS !! --
     local playerPed = GetPlayerPed(-1)
     prop_name = prop_name or 'prop_vodka_bottle'
 	animPocni = true
